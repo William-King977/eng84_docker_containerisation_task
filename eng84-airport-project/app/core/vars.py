@@ -1,0 +1,3 @@
+
+AIRPLANE_SPEED = 480
+

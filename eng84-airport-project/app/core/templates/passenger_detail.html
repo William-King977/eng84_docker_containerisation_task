@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+
+{% block body_title %}Passenger Details{% endblock %}
+{% block content %}
+
+
+<hr>
+
+<div class="float-container">
+
+
+  <div class='float-child'>
+
+    <div class="details-container-inner">
+    <div class="float-container">
+    <p class="info-label inline-block">
+    Name:
+    </p>
+    <p class="info-text inline-block font-weight-bold" style="font-size: calc(0.3rem + 1.8vw);">
+      {{object.first_name}}
+      {{object.last_name}}
+    </p>
+    </div>
+
+    <div class="float-container">
+    <p class="info-label inline-block">
+    Date of Birth:
+    </p>
+    <p class="info-text inline-block font-weight-bold">
+      {{object.dob}}
+    </p>
+    </div>
+
+    <div class="float-container">
+    <p class="info-label inline-block">
+    Age:
+    </p>
+    <p class="info-text inline-block font-weight-bold">
+      {{object.age|floatformat:0}}
+    </p>
+    </div>
+
+
+    <div class="float-container">
+    <p class="info-label inline-block">
+    PassportNum:
+    </p>
+    <p class="info-text inline-block font-weight-bold">
+      {{object.passport_num}}
+    </p>
+    </div>
+    </div>
+    <a href="{% url 'passenger_update' object.pk %}">Edit</a>
+  </div>
+
+  <div class="float-child">
+      {% load static %}
+      <img class='images' src="{% static "ilustrations/5.png" %}" alt="My image"/>
+  </div>
+</div>
+
+{% endblock %}

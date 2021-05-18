@@ -1,0 +1,92 @@
+
+{% extends 'base.html' %}
+
+{% block head_title %}Airport App Flight Details{% endblock %}
+{% block body_title %}Flight Detail{% endblock %}
+
+{% block content %}
+
+<hr>
+<div class='details-container-inner'>
+<h2>
+{{ queryset }}
+</h2>
+<p>
+{{ queryset.departure_time}} until {{ queryset.duration}}
+</p>
+<p>
+Aircraft: {{ queryset.aircraft_id}}
+</p>
+
+<p>
+Cost of Flight: {{ cost}}
+</p>
+
+</br>
+<h4>Available Seats: {{available}}</h4>
+
+
+<a href="{% url 'flight_update' queryset.flight_id %}">Edit Flight</a>
+
+</div>
+
+<div class="page-container">
+<h3 class="cairo-font" >Crew List</h3>
+  <div class = 'table-container'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for passenger in queryset.crew.all %}
+        <tr class='clickable-row' onclick="window.location='{{passenger.get_absolute_url}}';">
+              <th scope="row">{{passenger.id}}</th>
+              <td>{{passenger.first_name}} {{passenger.last_name}}</td>
+              <td>{{passenger.role}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+  </table>
+  </div>
+  {% load my_templatetag %}
+<br>
+<h3 class="cairo-font" >Attendance List</h3>
+  <div class = 'table-container'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Passport</th>
+        <th scope="col">Age</th>
+        <th scope="col">Payout</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for passenger in queryset.attendance.all %}
+        <tr class='clickable-row' onclick="window.location='{{passenger.get_absolute_url}}';">
+              <th scope="row">{{passenger.id}}</th>
+              <td>{{passenger.first_name}} {{passenger.last_name}}</td>
+              <td>{{passenger.passport_num}}</td>
+              <td>{{passenger.age|floatformat:0}}</td>
+              <td>{% at_index payout forloop.counter0 %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+  </table>
+  </div>
+  <div class="alert alert-secondary">
+    <h4>Total Revenue: {{revenue}}</h4>
+</div>
+</div>
+
+{% load static %}
+<img class='flight-details-pic' src="{% static "ilustrations/4.png" %}" alt="My image"/>
+{% endblock %}
+

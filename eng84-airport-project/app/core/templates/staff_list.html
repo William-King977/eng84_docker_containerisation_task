@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Airport App Staff List{% endblock %}
+{% block body_title %}Staff{% endblock %}
+
+{% block content %}
+
+<hr>
+<div class = 'page-container'>
+  <a href="{% url 'staff_create' %}" class="btn btn-primary">Add Staff Member</a>
+  <br>
+
+  <div class='table-container'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Employee ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role </th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for staff in queryset %}
+        <tr class='clickable-row' onclick="window.location='{{staff.get_absolute_url}}';">
+              <th scope="row">{{staff.id}}</th>
+              <td>{{staff.first_name}} {{staff.last_name}}</td>
+              <td>{{staff.email}}</td>
+              <td>{{staff.role}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+  </table>
+
+</div>
+{% load static %}
+<img class='flights-list-pic' src="{% static "ilustrations/1.png" %}" alt="My image"/>
+{% endblock %}
+

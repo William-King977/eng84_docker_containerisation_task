@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block body_title %}Delete User{% endblock %}
+
+{% block content %}
+<div class=form-container>
+<p>Are you sure you want to delete this user?</p>
+<p><strong>{{passenger}}</strong></p>
+<form action="" method="POST">
+  {% csrf_token }%}
+  <input class="btn btn-primary" type="submit" value="Yes">
+  <a href="{{ view.get_success_url }}" class="btn btn-secondary" >Cancel</a>
+</form>
+</div>
+{% endblock %}
+
+

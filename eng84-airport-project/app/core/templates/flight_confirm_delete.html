@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block body_title %}Delete Flight{% endblock %}
+
+{% block content %}
+<div class=form-container>
+<p>Are you sure you want to delete this flight?</p>
+<p><strong>{{flight}}</strong></p>
+<form action="" method="POST">
+  {% csrf_token }%}
+  <input class="btn btn-primary" type="submit" value="Yes">
+  <a href="{% url 'flight_detail' flight.flight_id %}" class="btn btn-secondary" >Cancel</a>
+</form>
+</div>
+{% endblock %}
+

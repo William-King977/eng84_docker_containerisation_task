@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+
+{% block head_title %}AirportApp: Create Flight{% endblock%}
+{% block body_title %}Update Flight{% endblock %}
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {{form.media}}
+
+<div class="form-container">
+  <form method="post" >
+    <div class="form-group">
+  {% csrf_token %}
+  <!--
+  {% for field in form %}
+    </br>
+    <p class="font-weight-bold">{{field.label}}</p>
+    <p> {{ field }} </p>
+    <strong>{{error|escape}}</strong>
+  {% endfor %}
+  -->
+  {{form.as_p}}
+
+  </br>
+
+    <input type="submit" value="Save" class="btn btn-info">
+    &nbsp; &nbsp;
+    <a href="{% url 'flight_detail' object.flight_id %}" class="btn btn-secondary">Cancel</a>
+    &nbsp; &nbsp;
+    <a href="{% url 'flight_delete' object.flight_id %}" class="btn btn-danger">Delete</a>
+  </div>
+  </form>
+</div>
+{% endblock %}
+

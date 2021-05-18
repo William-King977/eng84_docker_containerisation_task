@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head_title %}Airport App Add Airport{% endblock%}
+{% block body_title %}Add Airport{% endblock %}
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {{form.media}}
+
+<div class="form-container">
+  <form method="post" >
+    <div class="form-group">
+  {% csrf_token %}
+  {% for field in form %}
+    </br>
+    <p class="font-weight-bold">{{field.label}}</p>
+    <p> {{ field }} </p>
+    <strong>{{error|escape}}</strong>
+  {% endfor %}
+
+  </br>
+
+    <input type="submit" value="Save" class="btn btn-primary">
+    &nbsp; &nbsp;
+    <a href="{% url 'airports' %}" >Cancel</a>
+  </div>
+  </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block head_title %}Airport App Passengers Create{% endblock %}
+{% block body_title %}Add Passenger{% endblock %}
+
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {{form.media}}
+
+
+<div class="form-container">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p }}
+        <button type="submit" class="btn btn-info">Add passenger</button>
+
+    </form>
+</div>
+
+{% endblock %}

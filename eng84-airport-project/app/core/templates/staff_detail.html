@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+
+{% block head_title %}Airport App Staff Details{% endblock %}
+{% block body_title %}Staff Details{% endblock %}
+
+{% block content %}
+<hr>
+
+
+<div class="details-container-outer">
+<div class="details-container">
+  <div class="details-container-inner">
+    <div class="float-container">
+    <p class="info-label inline-block">
+    Name:
+    </p>
+    <p class="info-text inline-block font-weight-bold" style="font-size: calc(0.3rem + 1.5vw);">
+      {{object.first_name}}
+      {{object.last_name}}
+    </p>
+    </div>
+
+    <div class="float-container">
+    <p class="info-label inline-block">
+    Age:
+    </p>
+    <p class="info-text inline-block font-weight-bold">
+      {{object.dob}}
+    </p>
+    </div>
+
+
+    <div class="float-container">
+    <p class="info-label inline-block">
+    Email:
+    </p>
+    <p class="info-text inline-block font-weight-bold">
+      {{object.email}}
+    </p>
+    </div>
+  </div>
+  <a href="{% url 'staff_update' object.pk %}">Edit Details</a>
+</div>
+</div>
+
+
+{% load static %}
+<img class='images' src="{% static "ilustrations/4.png" %}" alt="My image"/>
+
+{% endblock %}
+

@@ -1,0 +1,30 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block head_title %}Airport App Passengers Update{% endblock %}
+{% block body_title %}Update Passenger{% endblock %}
+
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {{form.media}}
+
+
+<div class="form-container">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p }}
+        <button type="submit" class="btn btn-info">Confirm</button>
+        <a href="{% url 'passenger_detail' object.id %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'passenger_delete' object.id %}" class="btn btn-danger">Delete</a>
+
+    </form>
+</div>
+
+{% endblock %}

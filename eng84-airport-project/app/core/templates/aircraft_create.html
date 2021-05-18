@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head_title %}AirportApp: Create Flight{% endblock%}
+{% block body_title %}Create Aircraft{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <form method="post" >
+    <div class="form-group">
+  {% csrf_token %}
+  {% for field in form %}
+    </br>
+    <p class="font-weight-bold">{{field.label}}</p>
+    <p> {{ field }} </p>
+    <strong>{{error|escape}}</strong>
+  {% endfor %}
+
+  </br>
+
+    <input type="submit" value="Save" class="btn btn-primary">
+    &nbsp; &nbsp;
+    <a href="{% url 'index' %}" >Cancel</a>
+  </div>
+  </form>
+</div>
+{% endblock %}
+

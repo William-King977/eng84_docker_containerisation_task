@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block body_title %}Aircraft Details{% endblock %}
+{% block content %}
+
+<hr>
+<div class='aircraft-details'>
+<p style="font-size:20px; font-weight: 900;">ID</p>
+<p>{{queryset.aircraft_id}}</p>
+<p style="font-size:20px; font-weight: 900;">Model</p>
+<p>{{queryset.model}}</p>
+<p style="font-size:20px; font-weight: 900;">Manufacturer</p>
+<p>{{queryset.manufacturer}}</p>
+<p style="font-size:20px; font-weight: 900;">Capacity</p>
+<p>{{queryset.capacity}}</p>
+
+
+</div>
+{% load static %}
+<img class='aircraft-details-pic' src="{% static "ilustrations/6.png" %}" alt="My image"/>
+{% endblock %}

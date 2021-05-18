@@ -1,0 +1,11 @@
+# Python Development
+.python-version
+__pycache__
+
+venv/
+/.idea/
+env/
+.vscode
+# Database
+*.sqlite3
+app/core/migrations/*

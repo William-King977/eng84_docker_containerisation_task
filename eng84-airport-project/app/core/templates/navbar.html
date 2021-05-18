@@ -1,0 +1,50 @@
+
+{% block navbar %}
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="" href="{% url 'index' %}">
+      {% load static %}
+      <img class="logo-image" src="{% static "ilustrations/logo.png" %}" alt="Website Logo"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <!-- Link Home by adding Django syntax to replace the url found in the urls.py named 'index'
+          <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          -->
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'staff_list' %}">Staff</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'flights' %}">Flights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'passengers' %}">Passengers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'airports' %}">Airports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'aircrafts' %}">Aircrafts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+        </li>
+        {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+
+        {% endif %}
+
+      </ul>
+    </div>
+  </nav>
+
+  {% endblock %}

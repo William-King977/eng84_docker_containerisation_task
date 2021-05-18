@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+
+{% block head_title %}AirportApp: Update Staff Details{% endblock%}
+{% block body_title %}Create Staff Details{% endblock %}
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {{form.media}}
+
+<div class="form-container">
+  <form method="post" >
+    <div class="form-group">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+
+  </br>
+
+    <input type="submit" value="Save" class="btn btn-primary">
+    &nbsp; &nbsp;
+    <a href="{% url 'staff_list' %}" >Cancel</a>
+  </div>
+  </form>
+</div>
+{% endblock %}
+

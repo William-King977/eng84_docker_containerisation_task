@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+
+{% block head_title %}AirportApp: Update Staff Details{% endblock%}
+{% block body_title %}Update Staff Details{% endblock %}
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+    {{form.media}}
+
+<div class="form-container">
+  <form method="post" >
+    <div class="form-group">
+  {% csrf_token %}
+  {% for field in form %}
+    </br>
+    <p class="font-weight-bold">{{field.label}}</p>
+    <p> {{ field }} </p>
+    <strong>{{error|escape}}</strong>
+  {% endfor %}
+
+  </br>
+
+    <input type="submit" value="Save" class="btn btn-info">
+    &nbsp; &nbsp;
+    <a href="{% url 'staff_detail' object.pk " class="btn btn-secondary" >Cancel</a>
+    &nbsp; &nbsp;
+    <a href="{% url 'staff_delete' object.pk %}" class="btn btn-danger">Delete</a>
+  </div>
+  </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Airport App Airports{% endblock %}
+{% block body_title %}Airport{% endblock %}
+
+{% block content%}
+
+  {% if queryset.current %}
+    <div class="details-container-inner">
+      <div class="float-container">
+      <p class="info-label inline-block">
+      Current:
+      </p>
+      <p class="info-text inline-block font-weight-bold" style="font-size: calc(0.3rem + 1.8vw);">
+      {{queryset.current}}
+      </p>
+      </div>
+
+
+  </div>
+  {%else%}
+
+  {%endif%}
+
+
+<hr>
+<div class="body-title">
+<h1>Other Airports</h1>
+</div>
+<hr>
+<div class = 'page-container'>
+  <a href="{% url 'airport_create' %}" class="btn btn-primary">Add Airport</a>
+  <br>
+
+  <div class = 'table-container'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Airport Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Country</th>
+        <th scope="col">Distance</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for airport in queryset.other %}
+        <tr>
+              <th scope="row">{{airport.id}}</th>
+              <td>{{airport.name}}</td>
+              <td>{{airport.city}}</td>
+              <td>{{airport.country}}</td>
+              <td>{{airport.distance}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+  </table>
+
+</div>
+
+{% load static %}
+<img class='images' src="{% static "ilustrations/1.png" %}" alt="My image"/>
+
+{% endblock %}
+

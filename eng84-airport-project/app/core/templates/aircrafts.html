@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block head_title %}Airport App Flights List{% endblock %}
+{% block body_title %}Aircrafts{% endblock %}
+
+{% block content %}
+
+<hr>
+
+<div class = 'page-container'>
+  <a href="{% url 'aircraft_create' %}" class="btn btn-primary">Add Aircraft</a>
+  <br>
+
+  <div class = 'table-container'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Aircraft ID</th>
+        <th scope="col">Manufacturer</th>
+        <th scope="col">Model</th>
+        <th scope="col">Capacity</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for plane in queryset %}
+        <tr class='clickable-row' onclick="window.location='{{flight.get_absolute_url}}';">
+              <th scope="row">{{plane.aircraft_id}}</th>
+              <td>{{plane.manufacturer}}</td>
+              <td>{{plane.model}}</td>
+              <td>{{plane.capacity}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+  </table>
+
+</div>
+
+{% load static %}
+<img class='aircrafts-list-pic' src="{% static "ilustrations/3.png" %}" alt="My image"/>
+{% endblock %}
+

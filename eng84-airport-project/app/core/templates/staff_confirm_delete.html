@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body_title %}Delete Staff{% endblock %}
+
+{% block content %}
+<div class=form-container>
+<p>Are you sure you want to delete this staff member?</p>
+<p><strong>{{object}}</strong></p>
+<form action="" method="POST">
+  {% csrf_token }%}
+  <input class="btn btn-primary" type="submit" value="Yes">
+  <a href="{% url 'staff_detail' object.id %}" class="btn btn-secondary" >Cancel</a>
+</form>
+</div>
+{% endblock %}

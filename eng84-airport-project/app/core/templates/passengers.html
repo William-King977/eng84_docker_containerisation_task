@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+{% block body_title %}Users{% endblock %}
+
+
+{% block content %}
+<hr>
+
+<div class="float-container">
+
+
+  <div class='float-child'>
+    <div class='page-container'>
+    <a href="{% url 'add_passengers' %}" class="btn btn-primary">Create User</a>
+    <br>
+    <div class = 'table-container'>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">UserID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for user in queryset %}
+            <tr class='clickable-row' onclick="window.location='{{user.get_absolute_url}}';">
+                  <th scope="row">{{user.id}}</th>
+                  <td>{{user.first_name}} {{user.last_name}}</td>
+                  <td>{{user.age|floatformat:0}}</td>
+                  <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+
+      {% load static %}
+      <img class="images" src="{% static "ilustrations/2.png" %}" alt="My image"/>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
