@@ -6,10 +6,10 @@
 5. Create a video for this task with a demo
 
 ## Containerising the Plane Project
-It's highly recommended to do all the containerisation steps manually first, to ensure it's actually working.
+It's highly recommended to do all the containerisation steps manually first, to ensure it's actually working. If you run into any problems with running the Python image or Plane Project, look at **Additional Notes**.
 
-### Modify the Dockerfile
-* In this task, we'll containerise a Python Plane Project and the original repository can be [found here](https://github.com/conjectures/eng84-airport-project)
+### Step 1: Modify the Dockerfile
+* In this task, we'll containerise a [Python Plane Project](https://github.com/conjectures/eng84-airport-project)
 * Clone the Plane Project repository
 * Create a `Dockerfile` in the same directory with the following contents:
   ```
@@ -36,13 +36,13 @@ It's highly recommended to do all the containerisation steps manually first, to 
   CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
   ```
 
-### Run the Plane Project
+### Step 2: Run the Plane Project
 * `docker build -t kingbigw/eng84_plane_project_django .` - build the image from the Dockerfile
 * `docker run -d -p 977:8000 kingbigw/eng84_plane_project_django` - run the project. Go on `localhost:977`, on your browser.
 
-### Making q Webhook with Google App Script
+### Step 3: Creating a Webhook with Google App Script
 * On Google Drive, go on `New` > `More` > `Google Apps Script`
-* Copy and paste the following code:
+* Copy and paste the following code, and change where applicable:
   ```
   function doPost(request) {
     // get string value of POST data
@@ -57,9 +57,9 @@ It's highly recommended to do all the containerisation steps manually first, to 
     // Send an email to me
     MailApp.sendEmail({
       to: "name@example-email.com",
-      subject: reponame + " on DockerHub has been updated",
+      subject: reponame + " on DockerHub Has Been Updated",
       htmlBody: "Hi William,<br /><br />"+
-                "The repository has been updated version " + tag + ".<br /><br />" +
+                "The repository has been updated to version " + tag + ".<br /><br />" +
                 "Thanks,<br />" +
                 "William"
     })
@@ -71,13 +71,23 @@ It's highly recommended to do all the containerisation steps manually first, to 
   * Allow access to `Anyone`
 * Copy the Web app URL
 
-### On Docker Webhooks
+### Step 4: Create a Docker Webhook
+* Select the repository you want to attach the webhook to
+* Select Webhooks
 * Give it a suitable name
 * Paste the Web app URL
-* Now, commit and push to your repository (no changes need to be made), then you'll recieve an email
+* Now, commit and push to your Docker repository (no changes need to be made), then you'll receive an email
 
 ## Additional Notes
-### Run Python Image
+**To run a Python Image:**
 * `alias docker="winpty docker"`
 * `docker run -dit python`
+
+**Execute these commands to run the project on the container's port:**
+* `cd eng84-plane-project`
+* `python -m pip install -r requirements.txt`
+* `cd app`
+* `python manage.py makemigrations`
+* `python manage.py migrate`
+* `python manage.py runserver 0.0.0.0:8000`
 
