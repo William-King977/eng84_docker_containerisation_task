@@ -34,7 +34,7 @@ It's highly recommended to do all the containerisation steps manually first, to 
   RUN python manage.py makemigrations
   RUN python manage.py migrate
   CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-```
+  ```
 
 ### Run the Plane Project
 * `docker build -t kingbigw/eng84_plane_project_django .` - build the image from the Dockerfile
