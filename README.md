@@ -40,7 +40,11 @@ It's highly recommended to do all the containerisation steps manually first, to 
 * `docker build -t kingbigw/eng84_plane_project_django .` - build the image from the Dockerfile
 * `docker run -d -p 977:8000 kingbigw/eng84_plane_project_django` - run the project. On your browser, go on `localhost:977` to see the application running.
 
-### Step 3: Creating a Webhook with Google App Script
+### Step 3: Commit and Push your Image to Docker Hub
+* `docker commit container_id kingbigw/eng84_plane_project_django` - changes it locally
+* `docker push kingbigw/eng84_plane_project_django:version_tag` - push it to Docker Hub
+
+### Step 4: Creating a Webhook with Google App Script
 * On Google Drive, go on `New` > `More` > `Google Apps Script`
 * Copy and paste the following code, and change where applicable:
   ```
@@ -72,7 +76,7 @@ It's highly recommended to do all the containerisation steps manually first, to 
   * Allow access to `Anyone`
 * Copy the Web app URL
 
-### Step 4: Create a Docker Webhook
+### Step 5: Create a Docker Webhook
 * Select the repository you want to attach the webhook to
 * Select `Webhooks`
 * Give it a suitable name
