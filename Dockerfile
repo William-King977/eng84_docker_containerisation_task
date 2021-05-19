@@ -13,10 +13,9 @@ EXPOSE 8000
 # Execute run the requirements
 WORKDIR /usr/src/app
 RUN python -m pip install -r requirements.txt
-WORKDIR /usr/src/app/app
 
 # Make migrations, then run the application
+WORKDIR /usr/src/app/app
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
