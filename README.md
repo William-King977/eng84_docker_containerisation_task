@@ -38,7 +38,7 @@ It's highly recommended to do all the containerisation steps manually first, to 
 
 ### Step 2: Run the Plane Project
 * `docker build -t kingbigw/eng84_plane_project_django .` - build the image from the Dockerfile
-* `docker run -d -p 977:8000 kingbigw/eng84_plane_project_django` - run the project. Go on `localhost:977`, on your browser.
+* `docker run -d -p 977:8000 kingbigw/eng84_plane_project_django` - run the project. On your browser, go on `localhost:977` to see the application running.
 
 ### Step 3: Creating a Webhook with Google App Script
 * On Google Drive, go on `New` > `More` > `Google Apps Script`
